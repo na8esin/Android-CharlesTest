@@ -4,13 +4,14 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 
-class TopViewModel(retrofit: Retrofit) : ViewModel() {
-    init {
+class TopViewModel(
+    private val retrofit: Retrofit
+) : ViewModel() {
+
+    fun firstProduct() {
         viewModelScope.launch {
             try {
                 val product = retrofit.create(ProductService::class.java).first()
